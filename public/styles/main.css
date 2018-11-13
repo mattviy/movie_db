@@ -1,0 +1,27 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    color: black;
+}
+li {
+    list-style-type: none;
+    color: black;
+}
+.movie-tile {
+    border: 1px solid gray;
+    margin: 0;
+}
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+.director {
+    font-size: 20px;
+    padding-bottom: 20px;
+}
+
+.year {
+    font-size: 20px;
+    padding-bottom: 20px;
+}
