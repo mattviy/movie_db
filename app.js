@@ -4,6 +4,7 @@ var path = require("path");
 var exphbs = require("express-handlebars");
 var hbs = require("hbs");
 
+
 var index = require('./routes/index');
 var movies = require('./routes/movies');
 
@@ -13,8 +14,7 @@ app.use(express.static('public'));
 app.set('views', __dirname + '/views');
 app.set('view engine', 'hbs');
 
-//hbs.registerPartials(__dirname + '/views/partials');
-
+//middleware that connects the routes
 app.use('/', index);
 app.use('/movies', movies);
 
