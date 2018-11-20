@@ -1,12 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const MongoClient = require('mongodb').MongoClient;
 const url = "mongodb://localhost/video";
 
-router.use(cookieParser())
 var urlcodeParser = bodyParser.urlencoded({ extended: false});
 
 mongoose.connect('mongodb://localhost/video')
@@ -16,7 +14,7 @@ const Celebrities = mongoose.model('celebrities');
 
 //router.get celebrities
 router.get('/', (req, res) => {
-    var Cookies = req.cookies;
+    var Cookies = req.signedCookies;
     if (Cookies.loggedIn === undefined) res.redirect('/user/login');
     else 
     Celebrities.find({}, (err, result ) => {
@@ -31,7 +29,7 @@ router.get('/', (req, res) => {
 
 // app.get create/add celebrities page 
 router.get('/add-celebrities', (req, res) => {
-    var Cookies = req.cookies;
+    var Cookies = req.signedCookies;
     if (Cookies.loggedIn === undefined) res.redirect('/user/login', {loggedIn: false});
     else 
     res.render('layouts/add-celebrities', {pageTitle: "Add celebrities", loggedIn: true});
@@ -39,7 +37,7 @@ router.get('/add-celebrities', (req, res) => {
 
 // app.post create  
 router.post('/add-celebrities', urlcodeParser, (req, res) => {
-    var Cookies = req.cookies;
+    var Cookies = req.signedCookies;
     if (Cookies.loggedIn === undefined) res.redirect('/user/login', {loggedIn: false});
     else 
     MongoClient.connect(url, function(err, db) {

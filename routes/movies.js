@@ -2,12 +2,9 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const cookieParser = require('cookie-parser');
 const MongoClient = require('mongodb').MongoClient;
 const url = "mongodb://localhost/video";
 
-
-router.use(cookieParser())
 var urlcodeParser = bodyParser.urlencoded({ extended: false});
 
 
@@ -20,7 +17,7 @@ const Movie = mongoose.model('movies')
 
 // app.get movies
 router.get('/', (req, res) => {
-    var Cookies = req.cookies;
+    var Cookies = req.signedCookies;
     if (Cookies.loggedIn === undefined) res.redirect('/user/login');
     else 
     Movie.find({}, (err, result ) => {
@@ -36,7 +33,7 @@ router.get('/', (req, res) => {
 
 //app.get create/add movies
 router.get('/create-movies', (req, res) => {
-    var Cookies = req.cookies;
+    var Cookies = req.signedCookies;
     if (Cookies.loggedIn === undefined) res.redirect('/user/login', {loggedIn: false});
     else 
     res.render('layouts/create-movies', {pageTitle: "createMovies",  loggedIn: true});
@@ -44,7 +41,7 @@ router.get('/create-movies', (req, res) => {
 
 // app.post 
 router.post("/create-movies", urlcodeParser, (req, res) => {
-    var Cookies = req.cookies;
+    var Cookies = req.signedCookies;
     if (Cookies.loggedIn === undefined) res.redirect('/user/login', {loggedIn: false});
     else 
     MongoClient.connect(url, function(err, db) {
@@ -62,7 +59,7 @@ router.post("/create-movies", urlcodeParser, (req, res) => {
 
 //render search page
 router.get('/search', (req, res) => {
-    var Cookies = req.cookies;
+    var Cookies = req.signedCookies;
     if (Cookies.loggedIn === undefined) res.redirect('/user/login', {loggedIn: false});
     else 
     res.render('layouts/search', {pageTitle: "SearchMovies", loggedIn: true});
@@ -70,7 +67,7 @@ router.get('/search', (req, res) => {
 
 //render search-result page
 router.get('/search-result', (req, res) => {
-    var Cookies = req.cookies;
+    var Cookies = req.signedCookies;
     if (Cookies.loggedIn === undefined) res.redirect('/user/login', {loggedIn: false});
     else 
     res.render('layouts/search-result', {pageTitle: "SearchResult", loggedIn: true});

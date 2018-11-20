@@ -8,14 +8,14 @@ const urlcodeParser = bodyParser.urlencoded({ extended: false});
 const bcrypt = require('bcryptjs');
 const salt = bcrypt.genSaltSync(10);
 const hash = bcrypt.hashSync("B4c0/\/", salt);
-
+const cookieParser = require("cookie-parser")
 module.exports = router; 
 
-mongoose.connect('mongodb://localhost/video')
+router.use(cookieParser("Super geheim"))
 
+mongoose.connect('mongodb://localhost/video')
 require(__dirname + '/../models/user-model')
 const User = mongoose.model('users')
-
 
 //render sign-up page
 router.get('/sign-up', (req, res) => {
@@ -53,6 +53,7 @@ router.post('/sign-up', urlcodeParser, (req, res) => {
 
 //post method for loggin in
 router.post('/login', urlcodeParser, (req, res) => {
+    debugger
     User.findOne({username: req.body.username}, (err, result) => {
         if(!result){
             res.render('layouts/user-login', {incorrectCredentials: true})
@@ -62,7 +63,7 @@ router.post('/login', urlcodeParser, (req, res) => {
             if (err) {
             res.end()
             } 
-            res.cookie('loggedIn', 'true');
+            res.cookie('loggedIn', 'true', { signed: true });
             res.redirect('/');
         })  
     });
