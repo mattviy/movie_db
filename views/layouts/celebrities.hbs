@@ -4,22 +4,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="/styles/main.css">
-    <title>IMDB top 250</title>
+    <title>{{pageTitle}}</title>
 </head>
     {{>_nav}}
     
     <div class="flex-right">
-        <div class="btn"><a href="/movies/create-movies">ADD MOVIES</a></div>
+        <div class="btn"><a href="/celebrities/add-celebrities">ADD CELEBRITIES</a></div>
     </div>
-
-    <div class="container">
-        {{#each movies}}
+    
+    <div class="s">
+        {{#each celebrities}}
             <ul class="movie-tile">
-                <li class="title">{{this.title}}</li>
-                <li class="director">{{this.director}}</li>
-                <li class="year">{{this.year}}</li>
+                <li class="title">{{this.firstname}}</li>
+                <li class="director">{{this.lastname}}</li>
+                <li class="year">{{this.nationality}}</li>
             </ul>
         {{/each}}
+
     </div>
 </html>
-

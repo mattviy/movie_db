@@ -1,3 +1,19 @@
-<ul>
-    <li><a href="/">home</a></li>
-</ul>
+<nav>
+    <ul>
+        <li><a href="/">HOME</a></li>
+        <li><a href="/movies">MOVIES</a></li>
+        <li><a href="/celebrities">CELEBRITIES</a></li>
+        <li><a href="/movies/search">SEARCH</a></li>
+        {{#if loggedIn}}
+            <li class="login-container"><a href="/user/sign-up">Logout</a><div class="logged in"></div></li>
+        {{else}}
+            <li class="login-container"><a href="/user/sign-up">Sign up/ Log in</a><div class="logged out"></div></li>
+        {{/if}}
+    </ul>
+</nav>
+
+
+{{!-- 
+<div class="entry">
+  
+</div> --}}

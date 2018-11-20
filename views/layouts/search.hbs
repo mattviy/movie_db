@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/styles/main.css">
+    <title>{{pageTitle}}</title>
+</head>
+<body>
+    {{>_nav}}
+    <div class="center">
+        <form action="/movies/search-result" method="POST" class="search">
+            <h1>SEARCH MOVIES</h1>
+            <br> 
+            <p>Enter title of a movie</p> 
+            <input type="text" name="title" value="" placeholder="title of movie">
+            <br><br>
+            <input type="submit" value="Submit">
+        </form> 
+    </div>
+    {{movies}}
+</body>
+</html>

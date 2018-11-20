@@ -1,15 +1,94 @@
 * {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Roboto', sans-serif;
     color: black;
+    margin: 0;
+}
+body {
+    height: 100%;
 }
 li {
     list-style-type: none;
-    color: black;
+    color: grey;
+    margin-bottom: 10px;
 }
+
+nav {
+    border-bottom: 1px solid grey;
+}
+nav ul {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 10px;
+}
+a {
+    text-decoration: none;
+    color: grey;
+    padding: 0 5px;
+}
+a:hover {
+    font-weight: bold;
+    text-decoration: stroke;
+    border-bottom: 2px solid grey;
+
+}
+
+.btn {
+    background-color:white;
+    border: 1px solid grey;
+    border-radius: 5px;
+    height: 40px;
+    width: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn:hover {
+    background-color:grey;
+    border: 1px solid white;
+}
+.btn:hover a {
+    color: white;
+}
+.center {
+    display: flex;
+    height: 600px;
+    justify-content: center;
+    align-items: center;
+}
+
+.card { 
+    border: 1px solid black;
+    border-radius: 5px;
+    color: grey;
+    width: 25%;
+    margin: 200px auto;
+    height: 300px;
+}
+
+
+.flex-right {
+    padding-top: 10px;
+    display: flex; 
+    flex-direction: row-reverse;
+    margin-right: 11px;
+}
+
 .movie-tile {
     border: 1px solid gray;
-    margin: 0;
+    border-radius: 5px;
+    margin: 10px auto;
+    width: 95%;
+
 }
+.movie-tile:hover {
+    background-color: grey;
+}
+
+.movie-tile:hover li {
+    color: white;
+}
+
 .title {
     font-size: 24px;
     font-weight: bold;
@@ -24,4 +103,31 @@ li {
 .year {
     font-size: 20px;
     padding-bottom: 20px;
+}
+
+.login-container {
+    display: inline-flex;
+    align-items: center;
+}
+
+.logged {
+    width: 10px;
+    height: 10px;
+    margin-left: 5px;
+    border-radius: 50px;
+}
+.in {
+    background-color: green;
+}
+.out {
+    background-color: red;
+}
+.error-message {
+    font-size: 10px;
+    padding-bottom: 5px; 
+    color: red;
+}
+.small-text {
+    margin-top: 5px;
+    font-size: 10px;
 }

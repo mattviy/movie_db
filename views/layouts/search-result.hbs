@@ -1,16 +1,21 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="/styles/main.css">
-    <title>IMDB top 250</title>
+    <title>{{pageTitle}}</title>
 </head>
 <body>
     {{>_nav}}
 
-    <div class="center">
-        <h1>HOMEPAGE</h1>
-    </div>
+    {{#each movies}}
+    <ul class="movie-tile">
+        <li class="title">{{this.title}}</li>
+        <li class="director">{{this.director}}</li>
+        <li class="year">{{this.year}}</li>
+    </ul>
+    {{/each}}
 </body>
 </html>
